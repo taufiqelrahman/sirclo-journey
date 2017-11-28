@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropdown from './components/Dropdown';
+import Daily from './components/Daily';
 
 export default class App extends React.Component{
   constructor() {
@@ -8,6 +9,9 @@ export default class App extends React.Component{
       dropdown: ''
     }
   }
+  componentDidMount() {
+    
+  }  
   handleDropdown = (e) => {
     this.setState({ dropdown: e.target.value })
   }
@@ -16,6 +20,7 @@ export default class App extends React.Component{
     return (
       <div>
         <Dropdown onChange={this.handleDropdown.bind(this)} value={dropdown}/>
+        <Daily />
       </div>
     )
   }
