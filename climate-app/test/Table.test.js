@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow, render, mount } from 'enzyme';
 import { expect } from 'chai'
 import App from './../src/App'
-import Table from './../src/components/Table'
 import 'jsdom-global/register'
 
 describe('Daily', function () {
