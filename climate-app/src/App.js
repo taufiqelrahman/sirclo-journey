@@ -3,6 +3,7 @@ import axios from 'axios'
 import moment from 'moment'
 import Dropdown from './components/Dropdown'
 import Daily from './components/Daily'
+import Table from './components/Table'
 
 export default class App extends React.Component{
   constructor() {
@@ -43,6 +44,7 @@ export default class App extends React.Component{
       <div>
         <Dropdown onChange={this.handleDropdown.bind(this)} value={dropdown}/>
         <Daily city={city} weather={weather}/>
+        <Table />
       </div>
     )
   }
