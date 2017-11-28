@@ -16,11 +16,15 @@ export default class App extends React.Component{
     }
   }
   componentDidMount() {
-    const URL = `http://api.openweathermap.org/data/2.5/forecast/daily?q=Jakarta&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1`
+    this.callAPI('Jakarta')
+  }
+  callAPI(city) {
+    const URL = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&mode=json&units=metric&cnt=5&APPID=481e3bc28e5264e5607c2b65b449bfc1`
     axios.get(URL)
       .then(res => {
         // console.log(res.data)
         let newState = Object.assign({}, this.state)
+        newState.weather = new Array()
         res.data.list.map(x => {
           newState.weather.push({
             date: moment(x.dt*1000).format('YYYY-MM-DD'),
@@ -42,11 +46,9 @@ export default class App extends React.Component{
         alert(err)
       })
   }
-  findAverate(array) {
-
-  }
   handleDropdown = (e) => {
     this.setState({ dropdown: e.target.value })
+    this.callAPI(e.target.value)
   }
   render() {
     const { dropdown, city, weather, average } = this.state
@@ -54,7 +56,7 @@ export default class App extends React.Component{
       <div>
         <Dropdown onChange={this.handleDropdown.bind(this)} value={dropdown}/>
         <Daily city={city} weather={weather}/>
-        <Table weather={weather} average={average}/>
+        <Table city={city} weather={weather} average={average}/>
       </div>
     )
   }

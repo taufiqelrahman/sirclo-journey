@@ -20,4 +20,13 @@ describe('Dropdown', function () {
     wrapper.find('select').simulate('change', {target: { value : 'Tokyo'}})
     expect(wrapper.state().dropdown).to.equal('Tokyo')
   })
+  it('can change dropdown value with correct API', function() {
+    const wrapper = mount(<App />)
+    wrapper.find('select').simulate('change', {target: { value : 'Tokyo'}})
+    setTimeout(function() {
+      wrapper.update();
+      expect(wrapper.state().dropdown).to.equal('Tokyo')
+      expect(wrapper.find('h5').text()).to.have.string('Tokyo')
+    }, 1000)
+  })
 })

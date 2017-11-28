@@ -2,9 +2,10 @@ import React from 'react'
 
 export default class Table extends React.Component{  
   renderHeading() {
+    const { city } = this.props
     return (      
       <tr>
-        <th>Jakarta</th>
+        <th>{city}</th>
         <th>Temperature</th> 
         <th>Variance</th>
       </tr>
