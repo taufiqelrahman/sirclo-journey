@@ -25,8 +25,8 @@ describe('Dropdown', function () {
     wrapper.find('select').simulate('change', {target: { value : 'Tokyo'}})
     setTimeout(function() {
       wrapper.update();
-      expect(wrapper.state().dropdown).to.equal('Tokyo')
-      expect(wrapper.find('h5').text()).to.have.string('Tokyo')
+      expect(wrapper.state().dropdown).to.equal(wrapper.state().city)
+      expect(wrapper.find('h5').text()).to.have.string(wrapper.state().city)
     }, 1000)
   })
 })
