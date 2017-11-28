@@ -1,18 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-export default class Dropdown extends React.Component{  
-  renderDropdown() {
-    const cities = ['Jakarta', 'Tokyo', 'London']
-    let rendered = new Array()
-    cities.map( (city,i) => rendered.push(<option key={i} value={city}>{city}</option>))
-    return rendered    
-  }
+export default class Daily extends React.Component{  
   render() {
-    const { onChange, value } = this.props
+    const { city } = this.props
     return (
       <div>
-        <h5>today's temperature is: {}</h5>
-        <h5>today's variance is: {}</h5>
+        <h5>today's temperature at {city} is: {}</h5>
+        <h6>today's variance at {city} is: {}</h6>
       </div>
     )    
   }
