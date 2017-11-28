@@ -20,6 +20,12 @@ class Cart {
       })
     } 
   }
+  removeProduct(code) {
+    const index = this._cart.findIndex(item => item.product.getName() == code)
+    if (index != -1) {
+      this._cart.splice(index)
+    }
+  }
 }
 
 module.exports = Cart

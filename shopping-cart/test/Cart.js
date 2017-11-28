@@ -21,5 +21,19 @@ describe('Cart', function() {
       assert.equal(cart.getCart().length,1)
     })
   })
+  describe('Remove product', function() {
+    it('can remove product', function() {
+      const cart = new Cart()
+      cart.addProduct('red',2)
+      cart.removeProduct('red')
+      assert.equal(cart.getCart().length,0)
+    })
+    it('fails when remove non-existing product', function() {
+      const cart = new Cart()
+      cart.addProduct('red',2)
+      cart.removeProduct('blue')
+      assert.equal(cart.getCart().length,1)
+    })
+  })
 
 })
