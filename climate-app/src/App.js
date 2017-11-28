@@ -11,7 +11,8 @@ export default class App extends React.Component{
     this.state = {
       dropdown: '',
       city: '',
-      weather: []
+      weather: [],
+      avarage: []
     }
   }
   componentDidMount() {
@@ -20,31 +21,40 @@ export default class App extends React.Component{
       .then(res => {
         // console.log(res.data)
         let newState = Object.assign({}, this.state)
-        newState.weather = new Array()
         res.data.list.map(x => {
           newState.weather.push({
             date: moment(x.dt*1000).format('YYYY-MM-DD'),
             temp: x.temp.day.toFixed(0),
             variance: (x.temp.max-x.temp.min).toFixed(1)
           })
+
         })
+        let temps = newState.weather.map(x => parseInt(x.temp))
+        let variances = newState.weather.map(x => parseInt(x.variance))
+        newState.average = {
+          temp: (temps.reduce((total, temp) => total + temp) / temps.length).toFixed(0),
+          variance: variances.reduce((total, variance) => total + variance) / variances.length
+        }
         newState.city = res.data.city.name
         this.setState(newState)
       })
       .catch(err => {
         alert(err)
       })
-  }  
+  }
+  findAverate(array) {
+
+  }
   handleDropdown = (e) => {
     this.setState({ dropdown: e.target.value })
   }
   render() {
-    const { dropdown, city, weather } = this.state
+    const { dropdown, city, weather, average } = this.state
     return (
       <div>
         <Dropdown onChange={this.handleDropdown.bind(this)} value={dropdown}/>
         <Daily city={city} weather={weather}/>
-        <Table weather={weather}/>
+        <Table weather={weather} average={average}/>
       </div>
     )
   }

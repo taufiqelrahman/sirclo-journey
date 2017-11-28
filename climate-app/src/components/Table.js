@@ -24,16 +24,29 @@ export default class Table extends React.Component{
     })
     return body
   }
+  renderFooter() {
+    const { average } = this.props
+    return (
+      <tr>
+        <td>Average</td>
+        <td className="temp">{average ? average.temp : 0}</td>
+        <td className="variance">{average ? average.variance : 0}</td>
+      </tr>
+    )
+  }
   render() {
     return (
       <div>
         <table>
           <thead>
-          {this.renderHeading()}
+            {this.renderHeading()}
           </thead>
           <tbody>
-          {this.renderBody()}
+            {this.renderBody()}
           </tbody>
+          <tfoot>
+            {this.renderFooter()}
+          </tfoot>
         </table>
       </div>
     )    

@@ -44,5 +44,15 @@ describe('Daily', function () {
       expect(firstRow.find('td.variance').text()).to.have.equal(firstDay.variance)
     }, 1000)
   })
+  it('should display correct average', function() {
+    const wrapper = mount(<App />)
+    setTimeout(function() {
+      wrapper.update();
+      const average = wrapper.state().average
+      const lastRow = wrapper.find('tbody tr').last()
+      expect(lastRow.find('td.temp').text()).to.have.equal(average.temp)
+      expect(lastRow.find('td.variance').text()).to.have.equal(average.variance)
+    }, 1000)
+  })
 
 })
