@@ -11,14 +11,14 @@ describe('Daily', function () {
   })
   it('should display 5 dates', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       wrapper.update();
       expect(wrapper.find('tbody tr')).to.have.length(5)
     }, 1000)
   })
   it('should display correct date', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       wrapper.update();
       const firstDay = wrapper.state().weather[0]
       const firstRow = wrapper.find('tbody tr').first()
@@ -27,7 +27,7 @@ describe('Daily', function () {
   })
   it('should display correct temp', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       wrapper.update();
       const firstDay = wrapper.state().weather[0]
       const firstRow = wrapper.find('tbody tr').first()
@@ -36,7 +36,7 @@ describe('Daily', function () {
   })
   it('should display correct variance', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       wrapper.update();
       const firstDay = wrapper.state().weather[0]
       const firstRow = wrapper.find('tbody tr').first()
@@ -45,7 +45,7 @@ describe('Daily', function () {
   })
   it('should display correct average', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       wrapper.update();
       const average = wrapper.state().average
       const lastRow = wrapper.find('tfoot tr').first()

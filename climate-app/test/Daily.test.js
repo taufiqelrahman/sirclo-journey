@@ -12,7 +12,7 @@ describe('Daily', function () {
   })
   it('should display correct city', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       const state = wrapper.state().city
       expect(wrapper.find('h5').text()).to.have.string(state)
       expect(wrapper.find('h6').text()).to.have.string(state)
@@ -20,14 +20,14 @@ describe('Daily', function () {
   })
   it('should display correct temp', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       const today = wrapper.state().weather[0]
       expect(wrapper.find('h5').text()).to.have.string(today.temp)
     }, 1000)
   })
   it('should display correct variance', function() {
     const wrapper = mount(<App />)
-    setTimeout(function() {
+    setTimeout(() => {
       const today = wrapper.state().weather[0]
       expect(wrapper.find('h6').text()).to.have.string(today.variance)
     }, 1000)

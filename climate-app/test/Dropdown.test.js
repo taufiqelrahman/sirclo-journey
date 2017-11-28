@@ -23,7 +23,7 @@ describe('Dropdown', function () {
   it('can change dropdown value with correct API', function() {
     const wrapper = mount(<App />)
     wrapper.find('select').simulate('change', {target: { value : 'Tokyo'}})
-    setTimeout(function() {
+    setTimeout(() => {
       wrapper.update();
       expect(wrapper.state().dropdown).to.equal(wrapper.state().city)
       expect(wrapper.find('h5').text()).to.have.string(wrapper.state().city)
