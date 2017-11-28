@@ -44,7 +44,7 @@ export default class App extends React.Component{
       <div>
         <Dropdown onChange={this.handleDropdown.bind(this)} value={dropdown}/>
         <Daily city={city} weather={weather}/>
-        <Table />
+        <Table weather={weather}/>
       </div>
     )
   }
