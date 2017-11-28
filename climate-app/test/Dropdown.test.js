@@ -11,4 +11,13 @@ describe('Dropdown', function () {
     const wrapper = shallow(<Dropdown />)
     expect(wrapper.find('select')).to.have.length(1)
   })
+  it('should have 3 options', function() {
+    const wrapper = shallow(<Dropdown />)
+    expect(wrapper.find('select option')).to.have.length(3)
+  })
+  it('can change dropdown value', function() {
+    const wrapper = mount(<App />)
+    wrapper.find('select').simulate('change', {target: { value : 'Tokyo'}})
+    expect(wrapper.state().dropdown).to.equal('Tokyo')
+  })
 })
