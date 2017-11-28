@@ -7,7 +7,7 @@ import 'jsdom-global/register'
 
 describe('Daily', function () {
   it('should display h5 & h6', function() {
-    const wrapper = shallow(<Daily />)
+    const wrapper = mount(<App />)
     expect(wrapper.find('h5')).to.have.length(1)
     expect(wrapper.find('h6')).to.have.length(1)
   })
@@ -19,5 +19,18 @@ describe('Daily', function () {
       expect(wrapper.find('h6').text()).to.have.string(state)
     }, 1000)
   })
-
+  it('should display correct temp', function() {
+    const wrapper = mount(<App />)
+    setTimeout(function() {
+      const today = wrapper.state().weather[0]
+      expect(wrapper.find('h5').text()).to.have.string(today.temp)
+    }, 1000)
+  })
+  it('should display correct variance', function() {
+    const wrapper = mount(<App />)
+    setTimeout(function() {
+      const today = wrapper.state().weather[0]
+      expect(wrapper.find('h6').text()).to.have.string(today.variance)
+    }, 1000)
+  })
 })

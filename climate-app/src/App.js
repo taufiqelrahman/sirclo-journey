@@ -1,5 +1,6 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
+import axios from 'axios'
+import moment from 'moment'
 import Dropdown from './components/Dropdown'
 import Daily from './components/Daily'
 
@@ -18,6 +19,14 @@ export default class App extends React.Component{
       .then(res => {
         // console.log(res.data)
         let newState = Object.assign({}, this.state)
+        newState.weather = new Array()
+        res.data.list.map(x => {
+          newState.weather.push({
+            date: moment(x.dt*1000).format('YYYY-MM-DD'),
+            temp: x.temp.day.toFixed(0),
+            variance: (x.temp.max-x.temp.min).toFixed(1)
+          })
+        })
         newState.city = res.data.city.name
         this.setState(newState)
       })
@@ -29,11 +38,11 @@ export default class App extends React.Component{
     this.setState({ dropdown: e.target.value })
   }
   render() {
-    const { dropdown, city } = this.state
+    const { dropdown, city, weather } = this.state
     return (
       <div>
         <Dropdown onChange={this.handleDropdown.bind(this)} value={dropdown}/>
-        <Daily city={city} />
+        <Daily city={city} weather={weather}/>
       </div>
     )
   }

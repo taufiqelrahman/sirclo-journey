@@ -23,6 +23,7 @@
     "jsdom": "^11.5.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^4.0.1",
+    "moment": "^2.19.2",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
     "webpack": "^3.8.1",
