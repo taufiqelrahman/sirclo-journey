@@ -5,16 +5,17 @@ export default class App extends React.Component{
   constructor() {
     super()
     this.state = {
-      dropdown: null
+      dropdown: ''
     }
   }
   handleDropdown = (e) => {
     this.setState({ dropdown: e.target.value })
   }
   render() {
+    const { dropdown } = this.state
     return (
       <div>
-        <Dropdown onChange={this.handleDropdown.bind(this)}/>
+        <Dropdown onChange={this.handleDropdown.bind(this)} value={dropdown}/>
       </div>
     )
   }

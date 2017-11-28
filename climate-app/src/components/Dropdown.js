@@ -8,9 +8,9 @@ export default class Dropdown extends React.Component{
     return rendered    
   }
   render() {
-    const { onChange } = this.props
+    const { onChange, value } = this.props
     return (
-      <select onChange={onChange}>
+      <select onChange={onChange} value={value}>
         { this.renderDropdown() }
       </select>
     )    
