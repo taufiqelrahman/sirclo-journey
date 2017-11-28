@@ -32,7 +32,7 @@ describe('Daily', function () {
       wrapper.update();
       const firstDay = wrapper.state().weather[0]
       const firstRow = wrapper.find('tbody tr').first()
-      expect(firstRow.find('td.temp').text()).to.have.equal(firstDay.temp)
+      expect(firstRow.find('td.temp').contains(firstDay.temp)).to.equal(true)
     }, 1000)
   })
   it('should display correct variance', function() {
@@ -41,7 +41,7 @@ describe('Daily', function () {
       wrapper.update();
       const firstDay = wrapper.state().weather[0]
       const firstRow = wrapper.find('tbody tr').first()
-      expect(firstRow.find('td.variance').text()).to.have.equal(firstDay.variance)
+      expect(firstRow.find('td.variance').contains(firstDay.variance)).to.equal(true)
     }, 1000)
   })
   it('should display correct average', function() {
@@ -49,9 +49,9 @@ describe('Daily', function () {
     setTimeout(function() {
       wrapper.update();
       const average = wrapper.state().average
-      const lastRow = wrapper.find('tbody tr').last()
-      expect(lastRow.find('td.temp').text()).to.have.equal(average.temp)
-      expect(lastRow.find('td.variance').text()).to.have.equal(average.variance)
+      const lastRow = wrapper.find('tfoot tr').first()
+      expect(lastRow.find('td.temp').contains(average.temp)).to.equal(true)
+      expect(lastRow.find('td.variance').contains(average.variance)).to.equal(true)
     }, 1000)
   })
 

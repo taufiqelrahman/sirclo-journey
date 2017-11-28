@@ -33,7 +33,7 @@ export default class App extends React.Component{
         let variances = newState.weather.map(x => parseInt(x.variance))
         newState.average = {
           temp: (temps.reduce((total, temp) => total + temp) / temps.length).toFixed(0),
-          variance: variances.reduce((total, variance) => total + variance) / variances.length
+          variance: (variances.reduce((total, variance) => total + variance) / variances.length).toFixed(1)
         }
         newState.city = res.data.city.name
         this.setState(newState)

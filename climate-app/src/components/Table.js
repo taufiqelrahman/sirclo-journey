@@ -17,8 +17,8 @@ export default class Table extends React.Component{
       body.push(
         <tr key={w.date}>
           <td className="date">{w.date}</td>
-          <td className="temp">{w.temp}</td>
-          <td className="variance">{w.variance}</td>
+          <td className="temp">{w.temp}C</td>
+          <td className="variance">{w.variance}C</td>
         </tr>
       )
     })
@@ -29,8 +29,8 @@ export default class Table extends React.Component{
     return (
       <tr>
         <td>Average</td>
-        <td className="temp">{average ? average.temp : 0}</td>
-        <td className="variance">{average ? average.variance : 0}</td>
+        <td className="temp">{average ? average.temp : 0}C</td>
+        <td className="variance">{average ? average.variance : 0}C</td>
       </tr>
     )
   }
