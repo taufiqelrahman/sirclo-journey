@@ -35,5 +35,13 @@ describe('Cart', function() {
       assert.equal(cart.getCart().length,1)
     })
   })
-
+  describe('Cart', function() {
+    it('can show cart', function() {
+      const cart = new Cart()
+      cart.addProduct('red',2)
+      cart.addProduct('blue',3)
+      assert.equal(cart.showCart().includes('red (2)'), true)
+      assert.equal(cart.showCart().includes('blue (3)'), true)
+    })
+  })
 })

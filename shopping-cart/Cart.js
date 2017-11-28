@@ -26,6 +26,13 @@ class Cart {
       this._cart.splice(index)
     }
   }
+  showCart() {
+    let printedArray = new Array()
+    this._cart.map(item => {
+      printedArray.push(`${item.product.getName()} (${item.quantity})`)
+    })
+    return printedArray.join('\n')
+  }
 }
 
 module.exports = Cart
